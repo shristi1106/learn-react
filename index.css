@@ -21,15 +21,14 @@
 
 .res-card {
    width: 200px;
-   
    padding: 10px;
-   background-color: antiquewhite;
+   background-color: #f0f0f0;
    margin: 5px;
-   border: 1px solid black;
+   /* cursor: pointer; */
 }
 
-.res-card :hover {
-   border: 1px solid black;
+.res-card:hover {
+   border: 1px solid #f0f0f0;
    cursor: pointer;
 }
 
@@ -50,4 +49,27 @@
 .filter-btn {
    margin: 10;
    cursor: pointer;
+}
+
+.shimmer-con {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.shimmer-card {
+   width: 200px;
+   height: 400px;
+   margin: 5px;
+   margin-top: 10px;
+   background-color: #f0f0f0;
+}
+
+.login-btn {
+   background-color: #f0f0f0;
+   padding: 0 20px;
+   margin-right: 5px;
+}
+
+.filter {
+   display: flex;
 }
