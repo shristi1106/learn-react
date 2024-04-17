@@ -47,6 +47,10 @@ It has different build for dev n production, more optimization at production bui
  export const Component
  import {Component} from "path"
 
- #React Hooks- normal js utility function
+ # React Hooks- normal js utility function
  -useState()- use to generate superpowerfull variables or use to create state variables
  -useEffect()
+
+# 2 types routing in web apps
+-Client side routing = All the components already in our local, when we want route that component only load not fetch the data from server side    
+-Server side routing =  you make a server call and page coming from that server 

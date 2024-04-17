@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
     //Local state Variable-Super powerfull variable
-    const [ListOfRestaurants, setListOfRestaurants] = useState([]);
+    const [ListOfRestaurants, setListOfRestaurants] = useState(null);
     const [searchText, setSearchText] = useState("");
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
@@ -19,12 +20,12 @@ const Body = () => {
         );
         const json = await data.json();
         //optional chaining
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //render our page with new data
-        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //render our page with new data
+        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 
     // conditional rendering
-    if (ListOfRestaurants.length === 0) {
+    if (ListOfRestaurants?.length === 0 && filteredRestaurant === 0) {
         return <Shimmer />
     }
 
@@ -56,6 +57,7 @@ const Body = () => {
                             (res) => res.info.avgRating > 4
                         );
                     setListOfRestaurants(filteredList);
+                    setFilteredRestaurant(filteredList);
                 }}
                 >
                     Top Rated restaurants</button>
@@ -63,7 +65,12 @@ const Body = () => {
 
             <div className='res-container'>
                 {filteredRestaurant.map((restaurant, index) => (
-                    <RestaurantCard key={index} resData={restaurant.info} />))}
+                    // <RestaurantCard key={index} resData={restaurant.info} />
+                    // console.log( restaurant.info,"abcd")
+
+                    <Link key={index} to={"/restaurants/" + restaurant?.info?.id}> <RestaurantCard resData={restaurant?.info} /> </Link>
+
+                ))}
             </div>
         </div>
     )
