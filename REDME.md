@@ -54,3 +54,6 @@ It has different build for dev n production, more optimization at production bui
 # 2 types routing in web apps
 -Client side routing = All the components already in our local, when we want route that component only load not fetch the data from server side    
 -Server side routing =  you make a server call and page coming from that server 
+
+#3 About Class based Component
+-when its load on web page first constructor will be called then 'render' will call
