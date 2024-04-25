@@ -20,7 +20,6 @@ class About extends Component {
       <div>
         <h1>about</h1>
         <UserClass name={"first Class"} />
-        <UserClass name={"second Class"} />
       </div>
     );
   }
