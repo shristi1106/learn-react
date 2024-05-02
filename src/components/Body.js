@@ -36,17 +36,19 @@ const Body = () => {
 
     return (
         <div className='body'>
-            <div className="filter">
-                <div className="search">
+            <div className="filter flex">
+                <div className="search p-4 m-4">
                     <input
                         type="text"
-                        className="search=box"
+                        className="search-box border border-solid border-black"
                         value={searchText}
                         onChange={(e) => {
                             setSearchText(e.target.value);
                         }}
                     />
-                    <button onClick={() => {
+                    <button 
+                    className="px-3 py-2 m-2 bg-green-200 rounded-lg"
+                     onClick={() => {
                         //filter the restaurants and update the ui
                         //search text
                         const filteredRestaurant = ListOfRestaurants.filter((res) =>
@@ -55,7 +57,11 @@ const Body = () => {
                         setFilteredRestaurant(filteredRestaurant);
                     }}>Search</button>
                 </div>
-                <button className='filter-btn' onClick={() => {
+
+                <div className="filter m-4 p-4 flex items-center">
+                <button
+                 className='filter-bt bg-gray-200 px-4 py-2 rounded-lg'
+                 onClick={() => {
                     //filter logic here 
                     const filteredList = ListOfRestaurants.filter
                         (
@@ -66,9 +72,10 @@ const Body = () => {
                 }}
                 >
                     Top Rated restaurants</button>
+                </div>
             </div>
 
-            <div className='res-container'>
+            <div className='res-container flex flex-wrap'>
                 {filteredRestaurant.map((restaurant, index) => (
                     // <RestaurantCard key={index} resData={restaurant.info} />
                     // console.log( restaurant.info,"abcd")
