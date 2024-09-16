@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLable } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -11,6 +11,9 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
+    const RestaurantCardPromoted = withPromotedLable(RestaurantCard);
+
+    console.log("ListOfRestaurants", ListOfRestaurants);
     useEffect(() => {
         fetchData();
     }, []);
@@ -46,32 +49,32 @@ const Body = () => {
                             setSearchText(e.target.value);
                         }}
                     />
-                    <button 
-                    className="px-3 py-2 m-2 bg-green-200 rounded-lg"
-                     onClick={() => {
-                        //filter the restaurants and update the ui
-                        //search text
-                        const filteredRestaurant = ListOfRestaurants.filter((res) =>
-                            res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                        );
-                        setFilteredRestaurant(filteredRestaurant);
-                    }}>Search</button>
+                    <button
+                        className="px-3 py-2 m-2 bg-green-200 rounded-lg"
+                        onClick={() => {
+                            //filter the restaurants and update the ui
+                            //search text
+                            const filteredRestaurant = ListOfRestaurants.filter((res) =>
+                                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                            );
+                            setFilteredRestaurant(filteredRestaurant);
+                        }}>Search</button>
                 </div>
 
                 <div className="filter m-4 p-4 flex items-center">
-                <button
-                 className='filter-bt bg-gray-200 px-4 py-2 rounded-lg'
-                 onClick={() => {
-                    //filter logic here 
-                    const filteredList = ListOfRestaurants.filter
-                        (
-                            (res) => res.info.avgRating > 4
-                        );
-                    setListOfRestaurants(filteredList);
-                    setFilteredRestaurant(filteredList);
-                }}
-                >
-                    Top Rated restaurants</button>
+                    <button
+                        className='filter-bt bg-gray-200 px-4 py-2 rounded-lg'
+                        onClick={() => {
+                            //filter logic here 
+                            const filteredList = ListOfRestaurants.filter
+                                (
+                                    (res) => res.info.avgRating > 4
+                                );
+                            setListOfRestaurants(filteredList);
+                            setFilteredRestaurant(filteredList);
+                        }}
+                    >
+                        Top Rated restaurants</button>
                 </div>
             </div>
 
@@ -80,8 +83,11 @@ const Body = () => {
                     // <RestaurantCard key={index} resData={restaurant.info} />
                     // console.log( restaurant.info,"abcd")
 
-                    <Link key={index} to={"/restaurants/" + restaurant?.info?.id}> <RestaurantCard resData={restaurant?.info} /> </Link>
+                    <Link key={index} to={"/restaurants/" + restaurant?.info?.id}>
 
+                        {/* if the restaurant is promoted then add a promoted label to it */}
+                        {restaurant?.info?.promoted ? (<RestaurantCardPromoted resData={restaurant?.info} />) : (<RestaurantCard resData={restaurant?.info} />)}
+                    </Link>
                 ))}
             </div>
         </div>
