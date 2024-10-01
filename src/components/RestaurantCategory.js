@@ -1,7 +1,9 @@
-import { useState } from "react";
-import ItemList from "./ItemList";
+
 
 //RestaurantCategory-Controlled Component coz it coz their child component i.e RestaurantMenu has control to open/close of individual item
+
+import ItemList from "./ItemList";
+
 //RestaurantMenu- it didn't have full controlled to its parent so its is known as uncontrolled component 
 const RestaurantCategory = ({ data,showItems, setShowIndex }) => {
 

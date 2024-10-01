@@ -57,3 +57,17 @@ It has different build for dev n production, more optimization at production bui
 
 #3 About Class based Component
 -when its load on web page first constructor will be called then 'render' will call
+
+# React-Redux /Redux toolkit
+-install npm install @reduxjs/toolkit and react-redux
+-Build our store
+-connect our store to our app
+-Slice (CartSlice)
+-Selector
+
+# testing
+-unit testing =one specific type of component is testing inside it not whole app i.e header
+-integration testing= We will test multiple component together
+-end to end testing= how user will flow across the application like need selenium etc
+
+i.e developer is responsible for solely unit testing and integration testing
