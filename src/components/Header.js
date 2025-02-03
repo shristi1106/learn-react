@@ -21,7 +21,7 @@ const Header = () => {
         <div className="flex justify-between shadow-lg bg-pink-50">
             <div className="logo-container">
                 <img
-                    className="w-56"
+                    className="w-40"
                     src={LOGO_URL}
                 />
             </div>

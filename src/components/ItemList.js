@@ -1,9 +1,7 @@
-// import { CDN_URL } from "../utils/constants";
-
 import { useDispatch } from "react-redux";
 import { addItems } from "../utils/cartSlice";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, isShowRemove=false }) => {
     // console.log("item", items)
 
 
@@ -30,13 +28,21 @@ const ItemList = ({ items }) => {
                     {/* <div className="w-3/12 p-4" >
                         <img src={CDN_URL + item?.card?.info?.imageId } className="w-full" />
                     </div> */}
-                    <div className="w-3/12 p-4 ">
+                   { !isShowRemove &&
+                   <div className="w-3/12 p-4 ">
                         <button className="p-2 bg-green-500 shadow-lg mx-6 rounded-lg"
                             onClick={() => handleAddItem(item)}
                         >
-                            Add+
+                          Add+
                         </button>
-                    </div>
+                    </div>}
+                    {isShowRemove && <div className="w-3/12 p-4 ">
+                        <button className="p-2 bg-green-500 shadow-lg mx-6 rounded-lg"
+                            onClick={() => handleAddItem(item)}
+                        >
+                        Remove
+                        </button>
+                    </div>}
                 </div>
             ))}
         </div>

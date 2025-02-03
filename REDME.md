@@ -71,3 +71,14 @@ It has different build for dev n production, more optimization at production bui
 -end to end testing= how user will flow across the application like need selenium etc
 
 i.e developer is responsible for solely unit testing and integration testing
+
+# setting up testing in our app
+-install react testing library
+-install jest
+-installed abable dependencies
+-configure bable
+-config parcel config file to disable default babel transpilation
+-jest config (npx jest --init)
+-Install jsdom library
+-instll @bable/preset-react - to make json work in test cases
+-include @bable/preset-react inside my bable config
